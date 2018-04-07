@@ -15,6 +15,8 @@ package ca.ciccc.java.model;
 
 public class Rook extends ChessPiece {
 
+	private final String ROOKNAME = "ROOK";
+
 	/**
 	 *  Default constructor.
 	 */
@@ -28,6 +30,7 @@ public class Rook extends ChessPiece {
 	 */
 	public Rook(int value) {
 		super(value);
+		this.setName(ROOKNAME);
 	}
 
 	/**

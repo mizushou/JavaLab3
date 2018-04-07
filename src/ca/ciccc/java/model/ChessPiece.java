@@ -13,9 +13,11 @@ package ca.ciccc.java.model;
  *
  */
 
-public abstract class ChessPiece {
+public abstract class ChessPiece implements Comparable<ChessPiece> {
 
-	int value;
+	private int value;
+	private String name;
+
 
 	/**
 	 * Default constructor.
@@ -85,5 +87,19 @@ public abstract class ChessPiece {
 	 */
 	public void setValue(int value) {
 		this.value = value;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public int compareTo(ChessPiece o) {
+		return this.value - o.value;
 	}
 }

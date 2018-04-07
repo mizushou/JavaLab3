@@ -1,7 +1,13 @@
 package ca.ciccc.java.main;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+
+import ca.ciccc.java.comparator.ChessPieceSortByNameCompatator;
 import ca.ciccc.java.model.Bishop;
+import ca.ciccc.java.model.ChessPiece;
 import ca.ciccc.java.model.King;
 import ca.ciccc.java.model.Knight;
 import ca.ciccc.java.model.Pawn;
@@ -55,55 +61,52 @@ public class Driver {
 		System.out.println(d.getQueen().toString());
 		System.out.println(d.getKing().toString());
 
-		System.out.println();
+//		//Test#3 promotion method.
+//		System.out.println("=========Test#3 promotion method.=========");
+//		System.out.println("[Before promotion]");
+//		System.out.println(d.getPawnWArry()[0].isHasBeenPromoted());
+//		System.out.println("[After promotion]");
+//		d.getPawnWArry()[0].promote(new Queen(9));
+//		System.out.println(d.getPawnWArry()[0].isHasBeenPromoted());
+//		System.out.println(d.getPawnWArry()[0].getNewPiece().toString());
 
-		//Test#3 promotion method.
-		System.out.println("=========Test#3 promotion method.=========");
-		System.out.println("[Before promotion]");
-		System.out.println(d.getPawnWArry()[0].isHasBeenPromoted());
-		System.out.println("[After promotion]");
-		d.getPawnWArry()[0].promote(new Queen(9));
-		System.out.println(d.getPawnWArry()[0].isHasBeenPromoted());
-		System.out.println(d.getPawnWArry()[0].getNewPiece().toString());
 
-		System.out.println();
-
-		//Test#4 equals method.
-		System.out.println("=========Test#4 equals method.=========");
-
-		//#1 same piece - same obj
-		System.out.println("[#1 same piece - same obj]");
-		System.out.println(d.getKnightWArry()[0].equals(d.getKnightWArry()[0])); // true
-
-		//#2 same piece - not same obj
-		System.out.println("[#2 same piece - not same obj]");
-		System.out.println(d.getKnightWArry()[0].equals(d.getKnightWArry()[1])); // true
-
-		//#3 not same piece
-		System.out.println("[#3 not same piece]");
-		System.out.println(d.getKnightWArry()[0].equals(d.getBishopWArry()[0])); // false
-
-		//#4 not promoted pawn vs not promoted pawn
-		System.out.println("[#4 not promoted pawn vs not promoted pawn]");
-		System.out.println(d.getPawnWArry()[6].equals(d.getPawnWArry()[7])); // true
-
-		//#5 not promoted pawn vs promoted pawn
-		System.out.println("[#5 not promoted pawn vs promoted pawn]");
-		System.out.println(d.getPawnWArry()[1].equals(d.getPawnWArry()[0])); // false
-
-		//#6 promoted pawn vs not promoted pawn
-		System.out.println("[#6 promoted pawn vs not promoted pawn]");
-		System.out.println(d.getPawnWArry()[1].equals(d.getPawnWArry()[0])); // false
-
-		//#7 promoted pawn vs promoted pawn - same newPiece(Queen - Queen)
-		System.out.println("[#7 promoted pawn vs promoted pawn - same newPiece(Queen - Queen)]");
-		d.getPawnWArry()[2].promote(new Queen(9));
-		System.out.println(d.getPawnWArry()[0].equals(d.getPawnWArry()[2])); // true
-
-		//#8 promoted pawn vs promoted pawn - not same newPiece(Queen - Rook)
-		System.out.println("[#8 promoted pawn vs promoted pawn - not same newPiece(Queen - Rook)]");
-		d.getPawnWArry()[4].promote(new Rook(5));
-		System.out.println(d.getPawnWArry()[0].equals(d.getPawnWArry()[4])); // false
+//		//Test#4 equals method.
+//		System.out.println("=========Test#4 equals method.=========");
+//
+//		//#1 same piece - same obj
+//		System.out.println("[#1 same piece - same obj]");
+//		System.out.println(d.getKnightWArry()[0].equals(d.getKnightWArry()[0])); // true
+//
+//		//#2 same piece - not same obj
+//		System.out.println("[#2 same piece - not same obj]");
+//		System.out.println(d.getKnightWArry()[0].equals(d.getKnightWArry()[1])); // true
+//
+//		//#3 not same piece
+//		System.out.println("[#3 not same piece]");
+//		System.out.println(d.getKnightWArry()[0].equals(d.getBishopWArry()[0])); // false
+//
+//		//#4 not promoted pawn vs not promoted pawn
+//		System.out.println("[#4 not promoted pawn vs not promoted pawn]");
+//		System.out.println(d.getPawnWArry()[6].equals(d.getPawnWArry()[7])); // true
+//
+//		//#5 not promoted pawn vs promoted pawn
+//		System.out.println("[#5 not promoted pawn vs promoted pawn]");
+//		System.out.println(d.getPawnWArry()[1].equals(d.getPawnWArry()[0])); // false
+//
+//		//#6 promoted pawn vs not promoted pawn
+//		System.out.println("[#6 promoted pawn vs not promoted pawn]");
+//		System.out.println(d.getPawnWArry()[1].equals(d.getPawnWArry()[0])); // false
+//
+//		//#7 promoted pawn vs promoted pawn - same newPiece(Queen - Queen)
+//		System.out.println("[#7 promoted pawn vs promoted pawn - same newPiece(Queen - Queen)]");
+//		d.getPawnWArry()[2].promote(new Queen(9));
+//		System.out.println(d.getPawnWArry()[0].equals(d.getPawnWArry()[2])); // true
+//
+//		//#8 promoted pawn vs promoted pawn - not same newPiece(Queen - Rook)
+//		System.out.println("[#8 promoted pawn vs promoted pawn - not same newPiece(Queen - Rook)]");
+//		d.getPawnWArry()[4].promote(new Rook(5));
+//		System.out.println(d.getPawnWArry()[0].equals(d.getPawnWArry()[4])); // false
 
 		System.out.println();
 
@@ -133,6 +136,44 @@ public class Driver {
 		System.out.println(d.getQueen().hashCode());
 		System.out.println("#King");
 		System.out.println(d.getKing().hashCode());
+
+
+		System.out.println();
+
+		System.out.println("=========Test#999 Comparable vs Comparator=========");
+		ArrayList<ChessPiece> chessPieceBox = new ArrayList<>();
+		chessPieceBox.add(new Rook(5));
+		chessPieceBox.add(new Queen(9));
+		chessPieceBox.add(new Pawn(1));
+		chessPieceBox.add(new King(1000));
+		chessPieceBox.add(new Knight(2));
+		chessPieceBox.add(new Bishop(3));
+
+		System.out.println("---Before sort---\n");
+		d.printValue(chessPieceBox);
+
+		Collections.sort(chessPieceBox);
+
+		System.out.println("---After sort---\n");
+		d.printValue(chessPieceBox);
+
+		System.out.println();
+
+		ArrayList<ChessPiece> chessPieceBox2 = new ArrayList<>();
+		chessPieceBox2.add(new Rook(5));
+		chessPieceBox2.add(new Queen(9));
+		chessPieceBox2.add(new Pawn(1));
+		chessPieceBox2.add(new King(1000));
+		chessPieceBox2.add(new Knight(2));
+		chessPieceBox2.add(new Bishop(3));
+
+		System.out.println("---Before sort---\n");
+		d.printValue(chessPieceBox2);
+
+		chessPieceBox2.sort(new ChessPieceSortByNameCompatator().reversed());
+
+		System.out.println("---After sort---\n");
+		d.printValue(chessPieceBox2);
 	}
 
 	public void initilize() {
@@ -154,6 +195,15 @@ public class Driver {
 		};
 		queen = new Queen(QUEENVALUE);
 		king = new King(KINGVALUE);
+	}
+
+	public void printValue(ArrayList<ChessPiece> chessPieceBox) {
+
+		Iterator<ChessPiece> it = chessPieceBox.iterator();
+		while (it.hasNext()) {
+			ChessPiece cp = it.next();
+			System.out.println(cp.getName() + " " + cp.getValue());
+		}
 	}
 
 	public Pawn[] getPawnWArry() {

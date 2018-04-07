@@ -15,6 +15,8 @@ package ca.ciccc.java.model;
 
 public class Bishop extends ChessPiece {
 
+	private final String BISHOPNAME = "BISHOP";
+
 	/**
 	 *  Default constructor.
 	 */
@@ -28,6 +30,7 @@ public class Bishop extends ChessPiece {
 	 */
 	public Bishop(int value) {
 		super(value);
+		this.setName(BISHOPNAME);
 	}
 
 	/**

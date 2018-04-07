@@ -19,6 +19,8 @@ public class Pawn extends ChessPiece {
 	boolean hasBeenPromoted;
 	ChessPiece newPiece;
 
+	private final String PAWNNAME = "PAWN";
+
 	/**
 	 *  Default constructor.
 	 */
@@ -32,6 +34,7 @@ public class Pawn extends ChessPiece {
 	 */
 	public Pawn(int value) {
 		super(value);
+		this.setName(PAWNNAME);
 	}
 
 	/**
@@ -71,7 +74,7 @@ public class Pawn extends ChessPiece {
 	 */
 	public void promote(ChessPiece newPiece) {
 		if(this.hasBeenPromoted == false) {
-			if(newPiece.value == 2 || newPiece.value == 3 || newPiece.value == 5 || newPiece.value == 9) {
+			if(newPiece.getValue() == 2 || newPiece.getValue() == 3 || newPiece.getValue() == 5 || newPiece.getValue() == 9) {
 				this.newPiece = newPiece;
 				this.hasBeenPromoted = true;
 			}
